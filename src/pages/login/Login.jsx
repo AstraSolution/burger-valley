@@ -1,55 +1,99 @@
+import React from "react";
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
+const Login = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-export default function Login() {
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="max-w-md w-full px-6 py-8 bg-white shadow-md overflow-hidden">
-        <h2 className="text-3xl font-bold mb-6 text-center">Login</h2>
-        <form>
-          <div className="mb-4">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="username"
-            >
+    <div className="bg-[#000000e8] flex justify-center items-center min-h-screen bg-[url('https://templatekit.jegtheme.com/burgry/wp-content/uploads/sites/132/2021/07/burgers-with-beef-and-sauces--e1627971510961.jpg')] bg-blend-overlay">
+      <div className="bg-[#181818] p-8 rounded-lg shadow-md w-full max-w-md">
+        <h2 className="text-2xl font-bold mb-6 text-[#FFBA00]">Login</h2>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          {/* email field */}
+          <div className="relative float-label-input pb-5">
+            <input
+              type="email"
+              name="email"
+              placeholder=" "
+              {...register("email", {
+                required: "Email is required",
+                pattern: {
+                  value: /\S+@\S+\.\S+/,
+                  message: "Invalid email address",
+                },
+              })}
+              className="shadow-sm block w-full text-white bg-transparent  focus:outline-none focus:shadow-outline border border-[#ffc20a4d] rounded-md py-3 px-4 appearance-none leading-normal"
+            />
+            <label className="absolute top-3 left-0 text-[#ffc10a] pointer-events-none transition duration-200 ease-in-outbg-white px-4">
               Email
             </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="username"
-              type="email"
-              placeholder="Enter your email"
-            />
+
+            {errors.email && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.email.message}
+              </p>
+            )}
           </div>
-          <div className="mb-6">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="password"
-            >
+
+          {/* password field  */}
+          <div className="relative float-label-input pb-5">
+            <input
+              type="password"
+              name="password"
+              placeholder=" "
+              {...register("password", {
+                required: "Password is required",
+                minLength: {
+                  value: 6,
+                  message: "Password must be at least 6 characters",
+                },
+              })}
+              className="shadow-sm block w-full text-white bg-transparent  focus:outline-none focus:shadow-outline border border-[#ffc20a4d] rounded-md py-3 px-4 appearance-none leading-normal"
+            />
+            <label className="absolute top-3 left-0 text-[#ffc10a] pointer-events-none transition duration-200 ease-in-outbg-white px-4">
               Password
             </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-              id="password"
-              type="password"
-              placeholder="Enter your password"
-            />
+
+            {errors.password && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.password.message}
+              </p>
+            )}
           </div>
-          <div className="flex items-center justify-between">
-            <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="button"
-            >
-              Sign In
-            </button>
-            <a
-              className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-              href="#"
-            >
-              Forgot Password?
-            </a>
-          </div>
+
+          {/* login button  */}
+          <button
+            type="submit"
+            className="bg-[#FFBA00] w-full text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          >
+            Login
+          </button>
+
+          {/* redirect register page */}
+          <p className="text-gray-400 text-right mt-3">
+            <small>
+              Don't have an account? {""}
+              <Link
+                className="underline font-semibold text-[#ffc20aa2] hover:text-[#ffc10a]"
+                to={"/register"}
+              >
+                Register
+              </Link>
+            </small>
+          </p>
         </form>
       </div>
     </div>
   );
-}
+};
+
+export default Login;
