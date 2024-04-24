@@ -1,16 +1,23 @@
-import CategoryMenu from "./CategoryMenu";
+import AboutUs from "../../Components/HomeComponents/AboutUs/AboutUs";
+import Banner from "../../Components/HomeComponents/Banner/Banner";
+import Category from "../../Components/HomeComponents/Category/Category";
+import OfferFood from "../../Components/HomeComponents/OfferFood/OfferFood";
+import VideoSection from "../../Components/HomeComponents/VideoSection/VideoSection";
+import CustomerReview from "../../Components/Shared/CustomerReview/CustomerReview";
+import NewsLetter from "../../Components/Shared/NewsLetter/NewsLetter";
 
 function Home() {
 
   return (
-    <div className="bg-black-100">
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl text-white font-bold mb-4">Welcome to Your Company!</h1>
-        <p className="text-lg text-white">
-          We provide high-quality services to meet all your needs.
-        </p>
-        <p className="text-lg mt-4 text-white">Contact us today to get started.</p>
-        <CategoryMenu></CategoryMenu>
+    <div className="bg-black">
+      <div className="max-w-7xl mx-auto">
+        <Banner />
+        <Category />
+        <OfferFood />
+        <AboutUs />
+        <VideoSection />
+        <NewsLetter />
+        <CustomerReview />
       </div>
     </div>
   );
