@@ -5,14 +5,15 @@ import useAxios from './useAxios';
 
 const useGetAllNews = () => {
     const instance = useAxios()
-    const { data: allNewsData = [] } = useQuery({
+    const { data: allNewsData = [] ,  refetch, isLoading} = useQuery({
         queryKey: ["allNewsData"],
         queryFn: async () => {
-            const res = await instance.get("/news")
+            const res = await instance.get("/api/v1/news")
             return res.data
         }
     })
-    return [allNewsData]
+    return [allNewsData,  refetch, isLoading]
 };
 
 export default useGetAllNews;
+

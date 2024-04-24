@@ -1,49 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { FaRegClock } from "react-icons/fa";
 
-const News_Features = () => {
+
+const News_Features = ({ allNewsData }) => {
+    console.log(allNewsData);
+
+
     return (
-        <div className='px-2 py-4 text-white'>
+        <div className=' py-2 text-white font-oswald lg:tracking-wide'>
 
-            <div >
-                <h1 className='text-2xl '>News Features</h1>
-                <div className=' border-b-4 border-yellow-600 py-1 w-16  '></div>
+            <div className='md:pb-4 pb-2 lg:pb-4 '>
+                <h1 className='text-2xl '> Features News </h1>
+                <div className=' border-b-4 border-[#FF9D00] py-1 w-16'></div>
             </div>
 
-            {/* news features  */}
-            <div className='py-4'>
-                <h1> Noteworthy technology 2021 </h1>
-                <p> Date : 20 June 2024  </p>
-            </div>
+            {allNewsData?.slice(0, 3)?.map((news) => {
+                const date = new Date(news.publish_date);
+                const formattedDate = `${date.toLocaleString('default', { month: 'long' })} ${date.getDate()}, ${date.getFullYear()}`;
 
-            {/* News categories  */}
-
-            <div>
-
-                <div className=" ">
-                    <div>
-                        <h1 className=" text-xl font-bold text-white">CATEGORY</h1>
-                        <div className=' border-b-4 border-yellow-600 py-1 w-16  '></div>
+                return (
+                    <div key={news._id}>
+                        {/* News features */}
+                        <div className='py-2'>
+                            <h1 className='text-md md:text-lg lg:text-xl'>{news?.title}</h1>
+                            <p className='flex items-center gap-2 '>
+                                <span className='text-[#FF9D00]'><FaRegClock /></span>
+                                <span className='text-sm py-1 '>{formattedDate}</span>
+                            </p>
+                        </div>
                     </div>
+                );
+            })}
 
-                    <ul className=" py-4 text-white ">
-                        <div className='flex items-center gap-1'>
-                            <div className=' border-b-4 border-yellow-600  w-6   '></div>
-                            <li className="py-1">NEWS</li>
-                        </div>
-                        <div className='flex items-center gap-1'>
-                            <div className=' border-b-4 border-yellow-600  w-6   '></div>
-                            <li className="py-1">FOOD</li>
-                        </div>
-                        <div className='flex items-center gap-1'>
-                            <div className=' border-b-4 border-yellow-600  w-6   '></div>
-                            <li className="py-1">BEVERAGE</li>
-                        </div>
-                        
-                    </ul>
-                </div>
+          
 
-
-            </div>
         </div>
     );
 };

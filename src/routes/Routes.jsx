@@ -12,6 +12,9 @@ import AllMenus from "../pages/menu/AllMenus";
 import MenuDetails from "../pages/menuDetails/MenuDetails";
 import News_Details from "../pages/news_section/News_Details";
 import Add_News from "../pages/news_section/Add_News";
+import Faq from "../pages/faq/Faq";
+import AllNews from "../pages/news_section/AllNews";
+import Gallery from "../pages/gallery/Gallery";
 
 const router = createBrowserRouter([
   {
@@ -48,8 +51,13 @@ const router = createBrowserRouter([
         element: <News></News>
       },
       {
+        path: "all-news",
+        element: <AllNews></AllNews>
+      },
+      {
         path: "/news_details/:id",
-        element: <News_Details></News_Details>
+        element: <News_Details></News_Details>,
+        loader: ({ params }) => fetch(`https://burger-valley-server.vercel.app/api/v1/news/${params.id}`)
       },
       {
         path: "add_news",
@@ -63,10 +71,18 @@ const router = createBrowserRouter([
         path: "about-us",
         element: <AboutUs />
       },
+      {
+        path: "faq",
+        element: <Faq />
+      },
+      {
+        path: "gallery",
+        element: <Gallery />
+      },
     ],
   },
   {
-    path: "dashboard",
+    path: "/dashboard",
     element: <Dashboard />,
   },
 ]);
