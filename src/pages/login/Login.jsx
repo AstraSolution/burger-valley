@@ -1,16 +1,43 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import { useUser } from "../../Providers/UserProvider/UserProvider";
 
 const Login = () => {
+  // const setUser = useUser().setUser();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:1010/api/v1/login",
+        data
+      );
+      console.log(response.data);
+      const userData = response.data;
+      // setUser(userData);
+
+      // redirect to home page
+      navigate("/");
+
+      // alert("Login Successful");
+      toast("Login Successfully")
+    } catch (error) {
+      if (error.response) {
+        setErrorMessage(error.response.data);
+      } else {
+        setErrorMessage("An error occurred during login.");
+      }
+    }
   };
 
   return (
@@ -70,6 +97,11 @@ const Login = () => {
             )}
           </div>
 
+          {/* error message */}
+          {errorMessage && (
+            <p className="text-red-500 text-sm mb-4">{errorMessage}</p>
+          )}
+
           {/* login button  */}
           <button
             type="submit"
@@ -91,7 +123,10 @@ const Login = () => {
             </small>
           </p>
         </form>
+
       </div>
+      {/* react tostify  */}
+      <ToastContainer />
     </div>
   );
 };

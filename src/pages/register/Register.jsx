@@ -1,6 +1,9 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
   const {
@@ -8,9 +11,29 @@ const Register = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:1010/api/v1/register",
+        data
+      );
+      console.log(response.data);
+
+      // redirect to home page
+      navigate("/");
+
+      // Show toast alert message
+      toast("Congratulation!");
+    } catch (error) {
+      if (error.response) {
+        setErrorMessage(error.response.data);
+      } else {
+        setErrorMessage("An error occurred during registration.");
+      }
+    }
   };
 
   return (
@@ -90,6 +113,11 @@ const Register = () => {
             )}
           </div>
 
+          {/* error message */}
+          {errorMessage && (
+            <p className="text-red-500 text-sm mb-4">{errorMessage}</p>
+          )}
+
           {/* register button  */}
           <button
             type="submit"
@@ -112,6 +140,9 @@ const Register = () => {
           </p>
         </form>
       </div>
+
+      {/* toast container  */}
+      <ToastContainer />
     </div>
   );
 };
