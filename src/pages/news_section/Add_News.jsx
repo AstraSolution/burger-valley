@@ -173,7 +173,9 @@ const Add_News = () => {
             const res = await instance.post("/api/v1/news", newsInformation);
 
             if (res?.data) {
-                toast.success('Successfully Comments!');
+
+                toast.success('Successfully Post News!');
+
             }
         } catch (error) {
             console.error("Error submitting comment:", error);

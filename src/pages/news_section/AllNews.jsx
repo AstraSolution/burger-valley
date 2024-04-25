@@ -4,6 +4,7 @@ import { CiEdit } from "react-icons/ci";
 import { MdDelete } from "react-icons/md";
 import useAxios from '../../Hooks/useAxios';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 const AllNews = () => {
   const instance = useAxios()
@@ -140,9 +141,10 @@ const AllNews = () => {
                   <td className="border border-gray-400 p-2 text-center "> {news?.dislikes} </td>
 
                   <td className=" flex items-center justify-center gap-3 md:py-6 py-4 border border-gray-400 p-2">
-                    <span className="p-1 w-fit  text-white cursor-pointer text-sm rounded-md">
+                    <Link to={`/dashboard/updateNews/${news._id}`}> <span className="p-1 w-fit  text-white cursor-pointer text-sm rounded-md">
                       <CiEdit size={30}></CiEdit>
                     </span>
+                    </Link>
                     <span onClick={() => handleNewsDelete(news?._id, news?.title)} className="p-1 cursor-pointer w-fit text-white text-sm rounded-md">
                       <MdDelete className='text-red-500 ' size={30}></MdDelete>
                     </span>
