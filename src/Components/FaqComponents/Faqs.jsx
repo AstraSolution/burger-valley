@@ -35,7 +35,7 @@ const faqData = [
 
 const Faqs = () => {
     return (
-        <div className="container mx-auto py-12 text-white">
+        <div className="container mx-auto py-12 mb-10 text-white">
             <div className="space-y-7 max-w-4xl mx-auto mb-12 text-center flex flex-col items-center justify-center">
                 <h1 className='font-oswald text-4xl lg:text-5xl font-bold uppercase'>Frequently asked questions</h1>
                 <svg

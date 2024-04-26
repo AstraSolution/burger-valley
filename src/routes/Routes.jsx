@@ -14,6 +14,7 @@ import News_Details from "../pages/news_section/News_Details";
 import Add_News from "../pages/news_section/Add_News";
 import Faq from "../pages/faq/Faq";
 import Gallery from "../pages/gallery/Gallery";
+import Teams from "../pages/team/Teams";
 
 const router = createBrowserRouter([
   {
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
       {
         path: "about-us",
         element: <AboutUs />
+      },
+      {
+        path: "team",
+        element: <Teams />
       },
       {
         path: "faq",
