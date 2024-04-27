@@ -33,6 +33,12 @@
         "The recipe has gained widespread acclaim from food critics and enthusiasts alike, with many praising its bold flavors and satisfying texture.",
         "Whether you're a seasoned vegan or simply looking to incorporate more plant-based meals into your diet, Smith's vegan burger is sure to impress."
       ],
+      "items": [
+        "High in fiber and protein",
+        "Low in saturated fat",
+        "Contains no cholesterol or hormones",
+        "Supports sustainable farming practices"
+      ],
       "subtitles": [
         {
           "subtitle": "The Inspiration Behind the Recipe",
@@ -42,19 +48,9 @@
           "subtitle": "Key Ingredients",
           "content": "The vegan burger recipe features a combination of black beans, quinoa, mushrooms, and a secret blend of spices, all nestled in a whole grain bun."
         }
-      ],
-      "list_items": [
-        {
-          "title": "Benefits of the Vegan Burger Recipe",
-          "items": [
-            "High in fiber and protein",
-            "Low in saturated fat",
-            "Contains no cholesterol or hormones",
-            "Supports sustainable farming practices"
-          ]
-        }
-      ],
-      "conclusion": "With its delectable flavor profile, nutrient-rich ingredients, and eco-friendly ethos, Smith's vegan burger recipe is sure to become a staple in kitchens around the world."
-    }
+      ]
+    },
+    "list_title": "Benefits of the Vegan Burger Recipe",
+    "conclusion": "With its delectable flavor profile, nutrient-rich ingredients, and eco-friendly ethos, Smith's vegan burger recipe is sure to become a staple in kitchens around the world."
   }
 ]

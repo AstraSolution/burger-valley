@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import logo from '../../../assets/logo.png'
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
+import logo from "../../../assets/logo.png";
 import "./manu.css";
 
 const Navbar = () => {
@@ -14,17 +14,20 @@ const Navbar = () => {
     <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 font-primary bg-black duration-300">
       <div className="container w-full px-1 mx-auto flex flex-wrap items-center justify-between">
         <div className="w-full relative flex items-center justify-between lg:w-auto lg:static lg:block lg:justify-start">
-
           {/* Logo Section Start */}
-          <div className='flex items-center gap-4 mr-5'>
+          <div className="flex items-center gap-4 mr-5">
             {/* <a
               className="text-xl xl:text-2xl font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white duration-300"
               href="/"
             >
               Burger Valley
             </a> */}
-            <a rel="noopener noreferrer" href="#" className="flex justify-center lg:justify-start">
-              <img src={logo} alt="Burger Valley" className='w-20 mr-5' />
+            <a
+              rel="noopener noreferrer"
+              href="#"
+              className="flex justify-center lg:justify-start"
+            >
+              <img src={logo} alt="Burger Valley" className="w-20 mr-5" />
             </a>
           </div>
           {/* Logo Section End */}
@@ -35,14 +38,16 @@ const Navbar = () => {
             type="button"
             onClick={toggleNavbar}
           >
-            <div className={`hamburger ${navbarOpen ? 'is-active' : ''}`} id="hamburger-menu">
+            <div
+              className={`hamburger ${navbarOpen ? "is-active" : ""}`}
+              id="hamburger-menu"
+            >
               <span className="line"></span>
               <span className="line"></span>
               <span className="line"></span>
             </div>
           </button>
           {/* Navbar Menu Button Section End */}
-
         </div>
         <div
           className={
@@ -51,8 +56,7 @@ const Navbar = () => {
           }
           id="example-navbar-danger"
         >
-          <div className='w-full flex justify-between items-center mt-5 lg:mt-0 mb-2 lg:mb-0'>
-
+          <div className="w-full flex justify-between items-center mt-5 lg:mt-0 mb-2 lg:mb-0">
             {/* Nav Links And Routes Section Start */}
             <div>
               <ul className="flex flex-col lg:flex-row list-none lg:ml-auto gap-3 xl:gap-5">
@@ -65,7 +69,6 @@ const Navbar = () => {
                   >
                     HOME
                   </NavLink>
-
                 </li>
                 <li className=" px-1 xl:px-3 py-2 flex items-center text-sm xl:text-base uppercase font-semibold  text-white duration-300 hover:opacity-75">
                   <NavLink
@@ -76,7 +79,6 @@ const Navbar = () => {
                   >
                     Menus
                   </NavLink>
-
                 </li>
                 <li className=" px-1 xl:px-3 py-2 flex items-center text-sm xl:text-base uppercase font-semibold text-white duration-300 hover:opacity-75">
                   <NavLink
@@ -105,7 +107,7 @@ const Navbar = () => {
                       isPending ? "pending" : isActive ? "text-[#FF9D00]" : ""
                     }
                   >
-                    FAQ<span className='lowercase'>s</span>
+                    FAQ<span className="lowercase">s</span>
                   </NavLink>
                 </li>
                 <li className=" px-1 xl:px-3 py-2 flex items-center text-sm xl:text-base uppercase font-semibold  text-white duration-300 hover:opacity-75">
@@ -128,16 +130,7 @@ const Navbar = () => {
                     News
                   </NavLink>
                 </li>
-                <li className=" px-1 xl:px-3 py-2 flex items-center text-sm xl:text-base uppercase font-semibold  text-white duration-300 hover:opacity-75">
-                  <NavLink
-                    to="/all-news"
-                    className={({ isActive, isPending }) =>
-                      isPending ? "pending" : isActive ? "text-[#FF9D00]" : ""
-                    }
-                  >
-                    All News
-                  </NavLink>
-                </li>
+              
 
                 <li className=" px-1 xl:px-3 py-2 flex items-center text-sm xl:text-base uppercase font-semibold  text-white duration-300 hover:opacity-75">
                   <NavLink
@@ -164,9 +157,8 @@ const Navbar = () => {
             {/* Nav Links And Routes Section End */}
 
             {/* User Section Start */}
-            <div >
+            <div>
               <ul className=" flex lg:items-center justify-center items-end flex-col lg:flex-row list-none lg:ml-auto gap-3 xl:gap-5">
-
                 <li className=" px-1 xl:px-3 py-2 flex items-center text-sm xl:text-base uppercase font-semibold  text-white duration-300 hover:opacity-75">
                   <NavLink
                     to="login"
@@ -177,20 +169,21 @@ const Navbar = () => {
                     LOGIN
                   </NavLink>
                 </li>
-                <a className=" lg:my-1 xl:mx-3 flex items-center text-sm xl:text-base uppercase font-semibold  text-white duration-300 hover:opacity-75 border-2 border-[#FF9D00] rounded-md">
+                <li className=" lg:my-1 xl:mx-3 flex items-center text-sm xl:text-base uppercase font-semibold  text-white duration-300 hover:opacity-75 border-2 border-[#FF9D00] rounded-md">
                   <NavLink
                     to="/register"
                     className={({ isActive, isPending }) =>
                       isPending ? "pending" : isActive ? "text-[#FF9D00]" : ""
                     }
                   >
-                    <p className='flex items-center mx-2 xl:mx-3 my-1 xl:my-2'>REGISTER</p>
+                    <p className="flex items-center mx-2 xl:mx-3 my-1 xl:my-2">
+                      REGISTER
+                    </p>
                   </NavLink>
-                </a>
+                </li>
               </ul>
             </div>
             {/* User Section End */}
-
           </div>
         </div>
       </div>
