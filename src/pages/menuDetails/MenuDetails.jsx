@@ -78,7 +78,7 @@ const MenuDetails = () => {
   return (
     <div className="mx-auto lg:p-12 lg:ml-16 2xl:ml-40 ">
       <div className="flex flex-col md:flex-row">
-        <div className="2xl:ml-28 2xl:mt-28  md:mt-28">
+        <div className="2xl:ml-28 2xl:mt-28  md:mt-28 ">
           <img className="h-[450px] bg-cover rounded-xl" src={image} alt="" />
         </div>
 
