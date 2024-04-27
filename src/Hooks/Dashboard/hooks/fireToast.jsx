@@ -1,22 +1,24 @@
-import toast from 'react-hot-toast';
-import dataJSON from '../../public/data.json';
+import toast from "react-hot-toast";
+import dataJSON from "../../public/data.json";
 
 const createToast = (title, msg, type) => {
   toast.custom((t) => (
     <div
       className={`${
-        t.visible ? 'animate-enter' : 'animate-leave'
-      } max-w-md w-full ${type == '0' ? "bg-[#04b20c]" : type == '1' ? "bg-[#eab90f]" : "bg-[#e13f32]"} shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}
+        t.visible ? "animate-enter" : "animate-leave"
+      } max-w-md w-full ${
+        type == "0"
+          ? "bg-[#04b20c]"
+          : type == "1"
+          ? "bg-[#eab90f]"
+          : "bg-[#e13f32]"
+      } shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}
     >
       <div className="flex-1 w-0 p-4 ">
         <div className="flex items-start">
           <div className="ml-3 flex-1">
-            <p className="text-sm font-medium text-white">
-              {title}
-            </p>
-            <p className="mt-1 text-sm text-white">
-              {msg}
-            </p>
+            <p className="text-sm font-medium text-white">{title}</p>
+            <p className="mt-1 text-sm text-white">{msg}</p>
           </div>
         </div>
       </div>
@@ -28,9 +30,7 @@ const createToast = (title, msg, type) => {
           data-te-toast-dismiss
           aria-label="Close"
         >
-          <span
-            className="w-[1em] focus:opacity-100 disabled:pointer-events-none disabled:select-none disabled:opacity-25 [&.disabled]:pointer-events-none [&.disabled]:select-none [&.disabled]:opacity-25"
-          >
+          <span className="w-[1em] focus:opacity-100 disabled:pointer-events-none disabled:select-none disabled:opacity-25 [&.disabled]:pointer-events-none [&.disabled]:select-none [&.disabled]:opacity-25">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -49,7 +49,7 @@ const createToast = (title, msg, type) => {
         </button>
       </div>
     </div>
-  ))
+  ));
 };
 
 const fireToast = () => {
@@ -57,29 +57,68 @@ const fireToast = () => {
   if (alertSettings) {
     for (const alertSetting of JSON.parse(alertSettings)) {
       console.log(alertSetting);
-      const value = isNaN(parseFloat(alertSetting.value)) ? alertSetting.value : parseFloat(alertSetting.value);
-      const para = alertSetting.criterion < 2 ? "delta_" + alertSetting.para : alertSetting.para;
+      const value = isNaN(parseFloat(alertSetting.value))
+        ? alertSetting.value
+        : parseFloat(alertSetting.value);
+      const para =
+        alertSetting.criterion < 2
+          ? "delta_" + alertSetting.para
+          : alertSetting.para;
       if (alertSetting.id == "ALL") {
         Object.keys(dataJSON).map((id) => {
-          const condition = alertSetting.criterion == '0' ? value <= -1 * dataJSON[id][para] :
-            alertSetting.criterion == '1' || alertSetting.criterion == '3' ? value >= dataJSON[id][para] :
-            alertSetting.criterion == '2' ? value <= dataJSON[id][para] :
-            value == dataJSON[id][para];
-          const realValue = alertSetting.criterion == '0' ? dataJSON[id][para] * -1 : dataJSON[id][para];
+          const condition =
+            alertSetting.criterion == "0"
+              ? value <= -1 * dataJSON[id][para]
+              : alertSetting.criterion == "1" || alertSetting.criterion == "3"
+              ? value >= dataJSON[id][para]
+              : alertSetting.criterion == "2"
+              ? value <= dataJSON[id][para]
+              : value == dataJSON[id][para];
+          const realValue =
+            alertSetting.criterion == "0"
+              ? dataJSON[id][para] * -1
+              : dataJSON[id][para];
           if (condition) {
-            const msg = `${alertSetting.para} of ${id} ${alertSetting.criterion == 0 ? "goes down by" : alertSetting.criterion == 1 ? "goes up by" : alertSetting.criterion == 2 ? "is smaller than" : alertSetting.criterion == 3 ? "is greater than" : "is equal to"} ${realValue}`;
+            const msg = `${alertSetting.para} of ${id} ${
+              alertSetting.criterion == 0
+                ? "goes down by"
+                : alertSetting.criterion == 1
+                ? "goes up by"
+                : alertSetting.criterion == 2
+                ? "is smaller than"
+                : alertSetting.criterion == 3
+                ? "is greater than"
+                : "is equal to"
+            } ${realValue}`;
             createToast(id, msg, alertSetting.type);
           }
         });
       } else {
         const id = alertSetting.id;
-        const condition = alertSetting.criterion == '0' ? value >= -1 * dataJSON[id][para] :
-          alertSetting.criterion == '1' || alertSetting.criterion == '3' ? value >= dataJSON[id][para] :
-          alertSetting.criterion == '2' ? value <= dataJSON[id][para] :
-          value == dataJSON[id][para];
-        const realValue = alertSetting.criterion == '0' ? dataJSON[id][para] * -1 : dataJSON[id][para];
+        const condition =
+          alertSetting.criterion == "0"
+            ? value >= -1 * dataJSON[id][para]
+            : alertSetting.criterion == "1" || alertSetting.criterion == "3"
+            ? value >= dataJSON[id][para]
+            : alertSetting.criterion == "2"
+            ? value <= dataJSON[id][para]
+            : value == dataJSON[id][para];
+        const realValue =
+          alertSetting.criterion == "0"
+            ? dataJSON[id][para] * -1
+            : dataJSON[id][para];
         if (condition) {
-          const msg = `${alertSetting.para} of ${id} ${alertSetting.criterion == 0 ? "goes down by" : alertSetting.criterion == 1 ? "goes up by" : alertSetting.criterion == 2 ? "is smaller than" : alertSetting.criterion == 3 ? "is greater than" : "is equal to"} ${realValue}`;
+          const msg = `${alertSetting.para} of ${id} ${
+            alertSetting.criterion == 0
+              ? "goes down by"
+              : alertSetting.criterion == 1
+              ? "goes up by"
+              : alertSetting.criterion == 2
+              ? "is smaller than"
+              : alertSetting.criterion == 3
+              ? "is greater than"
+              : "is equal to"
+          } ${realValue}`;
           createToast(id, msg, alertSetting.type);
         }
       }

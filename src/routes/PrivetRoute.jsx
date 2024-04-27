@@ -1,6 +1,3 @@
-
 export default function PrivetRoute() {
-  return (
-    <div>PrivetRoute</div>
-  )
+  return <div>PrivetRoute</div>;
 }
