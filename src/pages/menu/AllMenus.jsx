@@ -1,33 +1,19 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+
 import useAllMenus from "../../Hooks/useAllMenus";
+
 import MenuCard from "./MenuCard";
-import { useLocation } from "react-router-dom";
 
 const AllMenus = () => {
   const [allMenuData] = useAllMenus();
-  let [activeTab, setActiveTab] = useState();
-
-  // console.log(allMenuData);
-
-  let { state } = useLocation();
-
+  console.log(allMenuData);
   let tabs = [
     { id: "burger", label: "Food" },
     { id: "snack", label: "Snack" },
     { id: "beverage", label: "Beverage" },
   ];
-
-  useEffect(() => {
-    if (state === null) {
-      setActiveTab(tabs[0]?.id);
-    } else {
-      setActiveTab(state.toLowerCase());
-    }
-  }, []);
-
-  // console.log(activeTab);
-
+  let [activeTab, setActiveTab] = useState(tabs[0]?.id);
   const CurrentTab = allMenuData?.filter(
     (food) => food?.category === activeTab
   );
@@ -48,7 +34,7 @@ const AllMenus = () => {
             }}
           >
             {activeTab === tab?.id && (
-              <motion.span
+              <motion.span  
                 layoutId="bubble"
                 className="absolute inset-0 z-10  bg-yellow-500 font-oswald mix-blend-hard-light"
                 style={{ borderRadius: 9 }}
@@ -59,8 +45,8 @@ const AllMenus = () => {
           </button>
         ))}{" "}
       </div>
-      <div className="container grid grid-cols-1 mt-3 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {CurrentTab?.map((food) => (
+      <div className="container mx-auto grid  grid-cols-1 mt-3 md:grid-cols-2 2xl:grid-cols-4 lg:grid-cols-3 lg:gap-3 gap-2">
+        {CurrentTab?.map((food,) => (
           <MenuCard key={food._id} food={food}></MenuCard>
         ))}
       </div>

@@ -10,7 +10,7 @@ import CategoryMenu from "./CategoryMenu";
 function Home() {
   return (
     <div className="bg-black">
-      <div className="max-w-7xl mx-auto">
+      <div className="container mx-auto">
         <Banner />
         <Category />
         <OfferFood />

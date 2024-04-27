@@ -76,38 +76,38 @@ const MenuDetails = () => {
   };
 
   return (
-    <div className="mx-auto lg:p-12 2xl:ml-40">
+    <div className="mx-auto lg:p-12 lg:ml-16 2xl:ml-40 ">
       <div className="flex flex-col md:flex-row">
-        <div className="2xl:ml-32 2xl:mt-16  md:mt-28">
-          <img className="h-[450px] bg-cover  rounded-xl" src={image} alt="" />
+        <div className="2xl:ml-28 2xl:mt-28  md:mt-28 ">
+          <img className="h-[450px] bg-cover rounded-xl" src={image} alt="" />
         </div>
 
         {/* Second half */}
         <div className="w-full md:w-1/2 p-10">
           <h2 className="text-3xl font-Oswald text-white font-semibold">{name}</h2>
 
-          <h2 className="text-yellow-500 font-oswald text-xl font-medium my-1">
+          <h2 className="text-yellow-500 font-oswald text-lg font-medium my-1">
             Food Price: $ {price}
           </h2>
           <h2 className="text-yellow-500 font-oswald text-xl font-medium my-1">
             Total Price: $ {price * quantity}
           </h2>
           <hr className="my-5" />
-          <p className="text-gray-500 mb-3 text-lg font-oswald">{description}</p>
+          <p className="text-white mb-3 text-lg font-oswald">{description}</p>
 
           <hr className="my-5" />
           <div className="overflow-x-auto">
             <table className="w-full table-auto">
               <thead>
                 <tr>
-                  <th className="py-2 px-4 font-oswald bg-yellow-200 text-left text-yellow-800 uppercase font-semibold">
+                  <th className="py-2 px-4 font-oswald bg-[#171717] text-left text-yellow-500 uppercase font-semibold">
                     Ingredients
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y font-oswald divide-gray-200">
+              <tbody className="divide-y font-oswald divide-[#171717]">
                 {ingredients?.map((ingredient, index) => (
-                  <tr key={index}>
+                  <tr key={index} className="">
                     <td className="py-2 px-5 text-white">{ingredient}</td>
                   </tr>
                 ))}
@@ -116,7 +116,7 @@ const MenuDetails = () => {
           </div>
           <div className="flex md:flex-col lg:flex-row md:items-start lg:items-center text-yellow-500 gap-1 my-5">
             <div className="flex items-center gap-3">
-              <h3>Quantity</h3>
+              <h3 className="text-lg">Quantity</h3>
               <div className="flex items-center">
                 <button
                   onClick={() => {
@@ -140,12 +140,12 @@ const MenuDetails = () => {
           </div>
           <button
             onClick={handleAddToCart}
-            className="bg-red-500 text-white font-oswald mb-3 rounded-lg md:p-3 lg:px-10 "
+            className="bg-yellow-500 text-white font-oswald mb-3 rounded-lg md:p-3 lg:px-10 "
           >
             Add Food
           </button>
           <button
-            className="text-yellow-500 flex items-center gap-2"
+            className="text-red-500 flex items-center gap-2"
             onClick={handleAddToWishlist}
           >
             <FaRegHeart className={`${favorite ? "text-red-500" : ""} `} />

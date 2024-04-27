@@ -68,7 +68,7 @@ const MenuCard = ({food}) => {
           </Link>
         </div>
       </div>
-      <div onClick={handleAddToWishlist} className="absolute top-9 right-0 left-3">
+      <div onClick={handleAddToWishlist} className="absolute lg:top-9 top-4 right-0 left-3">
         <button className="text-red-500 text-2xl">
           <FaRegHeart />
         </button>
