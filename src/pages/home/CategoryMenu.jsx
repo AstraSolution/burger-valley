@@ -64,7 +64,7 @@ const CategoryMenu = () => {
             </button>
           ))}
         </div>
-        <div className="container grid grid-cols-1 mt-3 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="container mx-auto grid  grid-cols-1 mt-3 md:grid-cols-2 2xl:grid-cols-4 lg:grid-cols-4 lg:gap-3 gap-2">
           {slicedCurrentTab?.map((food,) => (
             <MenuCard key={food._id} food={food}></MenuCard>
           ))}

@@ -7,7 +7,6 @@ import CustomerReview from "../../Components/Shared/CustomerReview/CustomerRevie
 import NewsLetter from "../../Components/Shared/NewsLetter/NewsLetter";
 
 function Home() {
-
   return (
     <div className="bg-black">
       <div className="max-w-7xl mx-auto">

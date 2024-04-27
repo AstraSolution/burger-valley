@@ -4,7 +4,6 @@ import Error from "../pages/error/Error";
 import Home from "../pages/home/Home";
 import Login from "../pages/login/Login";
 import Register from "../pages/register/Register";
-import Dashboard from "../pages/dashboard/Dashboard";
 import News from "../pages/news_section/News";
 import ContactUs from "../pages/contactUs/ContactUs";
 import AboutUs from "../pages/aboutUs/AboutUs";
@@ -15,6 +14,8 @@ import Add_News from "../pages/news_section/Add_News";
 import Faq from "../pages/faq/Faq";
 import AllNews from "../pages/news_section/AllNews";
 import Gallery from "../pages/gallery/Gallery";
+import Dashboard_Layout from "../Components/Dashboard/Dashboard_Layout/Dashboard_Layout";
+import UpdateNews from "../pages/news_section/UpdateNews";
 
 const router = createBrowserRouter([
   {
@@ -50,10 +51,7 @@ const router = createBrowserRouter([
         path: "news",
         element: <News></News>
       },
-      {
-        path: "all-news",
-        element: <AllNews></AllNews>
-      },
+
       {
         path: "/news_details/:id",
         element: <News_Details></News_Details>,
@@ -83,8 +81,25 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard />,
+    element:<Dashboard_Layout></Dashboard_Layout>,
+    children: [
+      {
+        path: "/dashboard/all-news",
+        element: <AllNews></AllNews>
+      },
+ 
+      {
+        path: "add-news",
+        element: <Add_News></Add_News>
+      },
+      {
+        path: "/dashboard/updateNews/:id",
+        element: <UpdateNews></UpdateNews>,
+        loader: ({ params }) => fetch(`https://burger-valley-server.vercel.app/api/v1/news/${params.id}`)
+      },
+    ]
   },
+
 ]);
 
 export default router;

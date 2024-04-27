@@ -3,6 +3,7 @@ import { FaRegClock } from "react-icons/fa";
 
 
 const News_Features = ({ allNewsData }) => {
+
     console.log(allNewsData);
 
 
@@ -32,7 +33,6 @@ const News_Features = ({ allNewsData }) => {
                 );
             })}
 
-          
 
         </div>
     );

@@ -2,19 +2,17 @@
 import { FaCheck } from 'react-icons/fa6';
 import News_Features from './News_Features';
 import { FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
-import Offer_Card from './Offer_Card';
 import { useLoaderData } from 'react-router-dom';
 import useGetAllNews from '../../Hooks/userGetAllnews';
 import { FacebookShareButton, TwitterShareButton, LinkedinShareButton } from 'react-share';
 import LikeAndDislike from './LikeAndDislike';
 import CommentPage from './CommentPage';
+import RightSide from './RightSide';
 
 
 const News_Details = () => {
 
-
     const currentPageURL = "burgervalley.com"
-
     const [allNewsData] = useGetAllNews()
     console.log(allNewsData);
 
@@ -22,8 +20,6 @@ const News_Details = () => {
     const newsData = useLoaderData()
     const { _id } = newsData;
     console.log(_id);
-
-
 
 
     return (
@@ -164,8 +160,6 @@ const News_Details = () => {
                         <div className='font-oswald lg:tracking-wide '>
                             <h1 className='text-2xl font-bold py-4 '> Leave  Reply </h1>
                             <p className='mb-6'> Please Share Your Opinio Now  .</p>
-
-                            {/* <Comment newsData={newsData}></Comment> */}
                            <CommentPage  newsData={newsData}></CommentPage>
 
                         </div>
@@ -176,7 +170,7 @@ const News_Details = () => {
                 {/* right side  */}
                 <div className=" lg:block lg:w-5/12 px-2  text-white font-oswald lg:tracking-wide">
                     <News_Features allNewsData={allNewsData} />
-                    <Offer_Card></Offer_Card>
+                    <RightSide></RightSide>
                 </div>
             </div>
         </>
